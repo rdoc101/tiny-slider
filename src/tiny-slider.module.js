@@ -1973,6 +1973,12 @@ export var tns = function(options) {
       case KEYS.LEFT:
         onControlsClick(e, -1);
         break;
+      case KEYS.UP:
+        onControlsClick(e, -1);
+        break;
+      case KEYS.DOWN:
+        onControlsClick(e, 1);
+        break;
       case KEYS.RIGHT:
         onControlsClick(e, 1);
     }
