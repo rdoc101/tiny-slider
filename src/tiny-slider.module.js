@@ -36,8 +36,8 @@ import { Events } from './helpers/events';
 import { jsTransform } from './helpers/jsTransform';
 
 // check browser version and local storage
-// if browser upgraded, 
-// 1. delete browser ralated data from local storage and 
+// if browser upgraded,
+// 1. delete browser ralated data from local storage and
 // 2. recheck these options and save them to local storage
 var browserInfo = navigator.userAgent,
     localStorageAccess = true,
@@ -92,34 +92,34 @@ var doc = document,
     SUBPIXEL = checkStorageValue(tnsStorage['tSP']) || setLocalStorage('tSP', subpixelLayout(), localStorageAccess),
     CSSMQ = checkStorageValue(tnsStorage['tMQ']) || setLocalStorage('tMQ', mediaquerySupport(), localStorageAccess),
     TRANSFORM = checkStorageValue(tnsStorage['tTf']) || setLocalStorage('tTf', whichProperty([
-      'transform', 
-      'WebkitTransform', 
-      'MozTransform', 
-      'msTransform', 
+      'transform',
+      'WebkitTransform',
+      'MozTransform',
+      'msTransform',
       'OTransform'
     ]), localStorageAccess),
     TRANSITIONDURATION = checkStorageValue(tnsStorage['tTDu']) || setLocalStorage('tTDu', whichProperty([
-      'transitionDuration', 
-      'WebkitTransitionDuration', 
-      'MozTransitionDuration', 
+      'transitionDuration',
+      'WebkitTransitionDuration',
+      'MozTransitionDuration',
       'OTransitionDuration'
     ]), localStorageAccess),
     TRANSITIONDELAY = checkStorageValue(tnsStorage['tTDe']) || setLocalStorage('tTDe', whichProperty([
-      'transitionDelay', 
-      'WebkitTransitionDelay', 
-      'MozTransitionDelay', 
+      'transitionDelay',
+      'WebkitTransitionDelay',
+      'MozTransitionDelay',
       'OTransitionDelay'
     ]), localStorageAccess),
     ANIMATIONDURATION = checkStorageValue(tnsStorage['tADu']) || setLocalStorage('tADu', whichProperty([
-      'animationDuration', 
-      'WebkitAnimationDuration', 
-      'MozAnimationDuration', 
+      'animationDuration',
+      'WebkitAnimationDuration',
+      'MozAnimationDuration',
       'OAnimationDuration'
     ]), localStorageAccess),
     ANIMATIONDELAY = checkStorageValue(tnsStorage['tADe']) || setLocalStorage('tADe', whichProperty([
-      'animationDelay', 
-      'WebkitAnimationDelay', 
-      'MozAnimationDelay', 
+      'animationDelay',
+      'WebkitAnimationDelay',
+      'MozAnimationDelay',
       'OAnimationDelay'
     ]), localStorageAccess),
     TRANSITIONEND = checkStorageValue(tnsStorage['tTE']) || setLocalStorage('tTE', getEndProperty(TRANSITIONDURATION, 'Transition'), localStorageAccess),
@@ -171,7 +171,7 @@ export var tns = function(options) {
     // startIndex: 0,
     onInit: false
   }, options || {});
-  
+
   // get element nodes from selectors
   var supportConsoleWarn = win.console && typeof win.console.warn === "function";
   var list = ['container', 'controlsContainer', 'navContainer', 'autoplayButton'];
@@ -196,16 +196,16 @@ export var tns = function(options) {
    }
 
   // update responsive
-  // from: { 
-  //    300: 2, 
+  // from: {
+  //    300: 2,
   //    800: {
   //      loop: false
   //    }
   // }
   // to: {
-  //    300: { 
-  //      items: 2 
-  //    }, 
+  //    300: {
+  //      items: 2
+  //    },
   //    800: {
   //      loop: false
   //    }
@@ -281,7 +281,7 @@ export var tns = function(options) {
     responsiveItems = arr;
 
     setBreakpointZone();
-  } 
+  }
 
   var items = getOption('items'),
       slideBy = getOption('slideBy') === 'page' ? items : getOption('slideBy'),
@@ -461,7 +461,7 @@ export var tns = function(options) {
 
   function getOption (item, viewport) {
     viewport = viewport ? viewport : windowWidth;
-    
+
     var obj = {
           slideBy: 'page',
           edgePadding: false,
@@ -497,8 +497,8 @@ export var tns = function(options) {
   }
 
   function getSlideMarginLeft (i) {
-    var str = CALC ? 
-      CALC + '(' + i * 100 + '% / ' + slideCountNew + ')' : 
+    var str = CALC ?
+      CALC + '(' + i * 100 + '% / ' + slideCountNew + ')' :
       i * 100 / slideCountNew + '%';
     return str;
   }
@@ -530,8 +530,8 @@ export var tns = function(options) {
     if (fixedWidthTem) {
       str = (fixedWidthTem + gutterTem) * slideCountNew + 'px';
     } else {
-      str = CALC ? 
-        CALC + '(' + slideCountNew * 100 + '% / ' + itemsTem + ')' : 
+      str = CALC ?
+        CALC + '(' + slideCountNew * 100 + '% / ' + itemsTem + ')' :
         slideCountNew * 100 / itemsTem + '%';
     }
 
@@ -547,8 +547,8 @@ export var tns = function(options) {
         str += (fixedWidthTem + gutterTem) + 'px';
       } else {
         var dividend = carousel ? slideCountNew : itemsTem;
-        str += CALC ? 
-          CALC + '(100% / ' + dividend + ')' : 
+        str += CALC ?
+          CALC + '(100% / ' + dividend + ')' :
           100 / dividend + '%';
       }
       str += importantStr + ';';
@@ -621,7 +621,7 @@ export var tns = function(options) {
     // delete datas after init
     classOuter = classInner = null;
 
-    // add id, class, aria attributes 
+    // add id, class, aria attributes
     // before clone slides
     for (var x = 0; x < slideCount; x++) {
       var item = slideItems[x];
@@ -636,7 +636,7 @@ export var tns = function(options) {
 
     // clone slides
     if (loop || edgePadding) {
-      var fragmentBefore = doc.createDocumentFragment(), 
+      var fragmentBefore = doc.createDocumentFragment(),
           fragmentAfter = doc.createDocumentFragment();
 
       for (var j = cloneCount; j--;) {
@@ -667,7 +667,7 @@ export var tns = function(options) {
       removeAttrs(item, ['tabindex']);
       addClass(item, slideActiveClass);
 
-      if (!carousel) { 
+      if (!carousel) {
         item.style.left = (i - index) * 100 / items + '%';
         addClass(item, animateIn);
         removeClass(item, animateNormal);
@@ -704,7 +704,7 @@ export var tns = function(options) {
 
       // slide styles
       if (horizontal || options.gutter) {
-        str = getSlideWidthStyle(options.fixedWidth, options.gutter, options.items) + 
+        str = getSlideWidthStyle(options.fixedWidth, options.gutter, options.items) +
               getSlideGutterStyle(options.gutter);
         addCSSRule(sheet, '#' + slideId + ' > .tns-item', str, getCssRulesLength(sheet));
       }
@@ -791,7 +791,7 @@ export var tns = function(options) {
       setSnapInterval();
     }
 
- 
+
     // == navInit ==
     if (hasNav) {
       var initIndex = !carousel ? 0 : cloneCount;
@@ -809,7 +809,7 @@ export var tns = function(options) {
           });
         });
 
-      // generated nav 
+      // generated nav
       } else {
         var navHtml = '',
             hiddenStr = navAsThumbnails ? '' : ' hidden';
@@ -968,7 +968,7 @@ export var tns = function(options) {
 
   function resizeTasks () {
     var breakpointZoneTem = breakpointZone,
-        indexTem = index, 
+        indexTem = index,
         itemsTem = items,
         freezeTem = freeze;
 
@@ -1003,14 +1003,14 @@ export var tns = function(options) {
       if (disable !== disableTem) {
         disableSlider(disable);
       }
-      
+
       if (freeze !== freezeTem) {
         // reset index to initial status
         if (freeze) { index = !carousel ? 0 : cloneCount; }
 
         toggleSlideDisplayAndEdgePadding();
       }
-      
+
       if (breakpointZoneTem !== breakpointZone) {
         speed = getOption('speed');
         edgePadding = getOption('edgePadding');
@@ -1043,7 +1043,7 @@ export var tns = function(options) {
         if (controls !== controlsTem) {
           controls ?
             showElement(controlsContainer) :
-            hideElement(controlsContainer); 
+            hideElement(controlsContainer);
         }
         if (controlsText !== controlsTextTem) {
           prevButton.innerHTML = controlsText[0];
@@ -1093,7 +1093,7 @@ export var tns = function(options) {
           autoplay = autoplayHoverPause = autoplayResetOnVisibility = false;
         } else {
           autoplay = getOption('autoplay');
-          
+
           if (autoplay) {
             autoplayHoverPause = getOption('autoplayHoverPause');
             autoplayResetOnVisibility = getOption('autoplayResetOnVisibility');
@@ -1150,7 +1150,7 @@ export var tns = function(options) {
 
         // slide styles
         if (horizontal && (items !== itemsTem || gutter !== gutterTem || fixedWidth != fixedWidthTem)) {
-          var str = getSlideWidthStyle(fixedWidth, gutter, items) + 
+          var str = getSlideWidthStyle(fixedWidth, gutter, items) +
                     getSlideGutterStyle(gutter);
 
           // remove the last line and
@@ -1164,13 +1164,13 @@ export var tns = function(options) {
         if (!fixedWidth && index === indexTem) { doTransform(0); }
       }
 
-      if (index !== indexTem) { 
+      if (index !== indexTem) {
         events.emit('indexChanged', info());
-        doTransform(0); 
+        doTransform(0);
         indexCached = index;
       }
 
-      if (items !== itemsTem) { 
+      if (items !== itemsTem) {
         additionalUpdates();
         updateSlidePosition();
         runAutoHeight();
@@ -1206,7 +1206,7 @@ export var tns = function(options) {
 
   // (slideBy, indexMin, indexMax) => index
   var updateIndex = (function () {
-    return loop ? 
+    return loop ?
       function () {
         var leftEdge = indexMin,
             rightEdge = indexMax;
@@ -1287,7 +1287,7 @@ export var tns = function(options) {
 
   function disableSlider (disable) {
     var len = slideItems.length;
-    
+
     if (disable) {
       sheet.disabled = true;
       container.className = container.className.replace(classContainer.substring(1), '');
@@ -1303,7 +1303,7 @@ export var tns = function(options) {
       if (!horizontal || !carousel) { removeElementStyles(innerWrapper); }
 
       // gallery
-      if (!carousel) { 
+      if (!carousel) {
         for (var i = index, l = index + slideCount; i < l; i++) {
           var item = slideItems[i];
           removeElementStyles(item);
@@ -1327,7 +1327,7 @@ export var tns = function(options) {
       }
 
       // gallery
-      if (!carousel) { 
+      if (!carousel) {
         for (var i = index, l = index + slideCount; i < l; i++) {
           var item = slideItems[i],
               classN = i < index + items ? animateIn : animateNormal;
@@ -1341,9 +1341,9 @@ export var tns = function(options) {
   // lazyload
   function lazyLoad () {
     if (lazyload && !disable) {
-      var i = index, 
+      var i = index,
           len = index + items;
-          
+
       if (edgePadding) {
         i -=1;
         len +=1;
@@ -1393,7 +1393,7 @@ export var tns = function(options) {
       }
 
       if (!images.length) {
-        updateInnerWrapperHeight(); 
+        updateInnerWrapperHeight();
         return;
       }
 
@@ -1409,17 +1409,17 @@ export var tns = function(options) {
     });
 
     if (!imgs.length) {
-      updateInnerWrapperHeight(); 
+      updateInnerWrapperHeight();
       return;
     }
 
-    setTimeout(function () { 
-      checkImagesLoaded(imgs, imgsSuccess, imgsFail); 
+    setTimeout(function () {
+      checkImagesLoaded(imgs, imgsSuccess, imgsFail);
     }, 16);
-  } 
+  }
 
   function additionalUpdates () {
-    lazyLoad(); 
+    lazyLoad();
     updateSlideStatus();
     updateControlsStatus();
     updateNavVisibility();
@@ -1468,7 +1468,7 @@ export var tns = function(options) {
     var l = index + Math.min(slideCount, items);
     for (var i = slideCountNew; i--;) {
       var item = slideItems[i];
-      
+
       // visible slides
       if (i >= index && i < l) {
         if (hasAttr(item, 'tabindex')) {
@@ -1493,7 +1493,7 @@ export var tns = function(options) {
 
   // gallery: update slide position
   function updateSlidePosition () {
-    if (!carousel) { 
+    if (!carousel) {
       var l = index + Math.min(slideCount, items);
       for (var i = slideCountNew; i--;) {
         var item = slideItems[i];
@@ -1639,7 +1639,7 @@ export var tns = function(options) {
       }
       removeClass(item, classOut);
       addClass(item, classIn);
-      
+
       if (isOut) { slideItemsOut.push(item); }
     }
   }
@@ -1651,17 +1651,17 @@ export var tns = function(options) {
     return carousel ?
       function (duration, distance) {
         if (!distance) { distance = getContainerTransformValue(); }
-        
+
         // constrain the distance when non-loop no-edgePadding fixedWidth reaches the right edge
         if (hasRightDeadZone && index === indexMax) {
           distance = - ((fixedWidth + gutter) * slideCountNew - vpInner) + 'px';
         }
 
         if (TRANSITIONDURATION || !duration) {
-          // for morden browsers with non-zero duration or 
+          // for morden browsers with non-zero duration or
           // zero duration for all browsers
           doContainerTransform(distance);
-          // run fallback function manually 
+          // run fallback function manually
           // when duration is 0 / container is hidden
           if (!duration || !isVisible(container)) { onTransitionEnd(); }
 
@@ -1683,7 +1683,7 @@ export var tns = function(options) {
         animateSlide(indexCached, animateIn, animateOut, true);
         animateSlide(index, animateNormal, animateIn);
 
-        // run fallback function manually 
+        // run fallback function manually
         // when transition or animation not supported / duration is 0
         if (!TRANSITIONEND || !ANIMATIONEND || !duration) { onTransitionEnd(); }
       };
@@ -1696,7 +1696,7 @@ export var tns = function(options) {
     // if container is hidden, set duration to 0
     // to fix an issue where browser doesn't fire ontransitionend on hidden element
     if (animating && !isVisible(container)) { duration = 0; }
-    
+
     if (TRANSITIONDURATION) { setDurations(duration); }
     transformCore(duration, distance);
   }
@@ -1751,7 +1751,7 @@ export var tns = function(options) {
           item.style.left = '';
 
           if (TRANSITIONDURATION) { setDurations(0, item); }
-          if (animateDelay && TRANSITIONDELAY) { 
+          if (animateDelay && TRANSITIONDELAY) {
             item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = '';
           }
           removeClass(item, animateOut);
@@ -1760,28 +1760,28 @@ export var tns = function(options) {
       }
 
       /* update slides, nav, controls after checking ...
-       * => legacy browsers who don't support 'event' 
-       *    have to check event first, otherwise event.target will cause an error 
-       * => or 'gallery' mode: 
+       * => legacy browsers who don't support 'event'
+       *    have to check event first, otherwise event.target will cause an error
+       * => or 'gallery' mode:
        *   + event target is slide item
-       * => or 'carousel' mode: 
-       *   + event target is container, 
+       * => or 'carousel' mode:
+       *   + event target is container,
        *   + event.property is the same with transform attribute
        */
-      if (!event || 
-          !carousel && event.target.parentNode === container || 
+      if (!event ||
+          !carousel && event.target.parentNode === container ||
           event.target === container && strTrans(event.propertyName) === strTrans(transformAttr)) {
 
-        if (!updateIndexBeforeTransform) { 
+        if (!updateIndexBeforeTransform) {
           var indexTem = index;
           updateIndex();
-          if (index !== indexTem) { 
+          if (index !== indexTem) {
             events.emit('indexChanged', info());
 
             if (TRANSITIONDURATION) { setDurations(0); }
             doContainerTransform();
           }
-        } 
+        }
 
         runAutoHeight();
 
@@ -1808,7 +1808,7 @@ export var tns = function(options) {
 
     // go to exact slide
     } else if (!running) {
-      var absIndex = index%slideCount, 
+      var absIndex = index%slideCount,
           indexGap = 0;
       if (absIndex < 0) { absIndex += slideCount; }
 
@@ -1953,20 +1953,20 @@ export var tns = function(options) {
   }
 
   function mouseoverPause () {
-    if (animating) { 
+    if (animating) {
       stopAutoplayTimer();
       autoplayHoverPaused = true;
     }
   }
 
   function mouseoutRestart () {
-    if (autoplayHoverPaused) { 
+    if (autoplayHoverPaused) {
       setAutoplayTimer();
       autoplayHoverPaused = false;
     }
   }
 
-  // keydown events on document 
+  // keydown events on document
   function onDocumentKeydown (e) {
     e = e || win.event;
     switch(e.keyCode) {
@@ -2088,7 +2088,8 @@ export var tns = function(options) {
   function onTouchOrMouseStart (e) {
     if (!running) {
       e = e || win.event;
-      var ev; 
+      var ev;
+      if (!touchedOrDraged) { touchedOrDraged = true; }
 
       if (isTouchEvent(e)) {
         ev = e.changedTouches[0];
@@ -2167,6 +2168,9 @@ export var tns = function(options) {
 
         disX = parseInt(ev.clientX) - startX;
         disY = parseInt(ev.clientY) - startY;
+        if (disY === 0) {
+          disY = -1;
+        }
         startX = startY = null; // reset startX, startY
         var sliderMoved = Boolean(horizontal ? disX : disY);
 
@@ -2188,11 +2192,11 @@ export var tns = function(options) {
             } while (i < slideCountNew && moved >= slideOffsetTops[i + 1]);
           }
         }
-        
+
         render(e, sliderMoved);
 
         // drag vs click
-        if (isDragEvent) { 
+        if (isDragEvent) {
           // reset isDragEvent
           isDragEvent = false;
 
@@ -2201,8 +2205,8 @@ export var tns = function(options) {
           addEvents(target, {'click': function preventClick (e) {
             preventDefaultBehavior(e);
             removeEvents(target, {'click': preventClick});
-          }}); 
-        } 
+          }});
+        }
       } else {
         startX = startY = null; // reset startX, startY
       }
@@ -2238,7 +2242,7 @@ export var tns = function(options) {
       visibleNavIndexes.unshift(0);
     }
   }
-  
+
   /*
    * 1. update visible nav items list
    * 2. add "hidden" attributes to previous visible nav items
@@ -2380,7 +2384,7 @@ export var tns = function(options) {
       containerParent.insertBefore(container, outerWrapper);
       outerWrapper.remove();
       outerWrapper = innerWrapper = container =
-      index = indexCached = items = slideBy = navCurrentIndex = navCurrentIndexCached = hasControls = visibleNavIndexes = visibleNavIndexesCached = 
+      index = indexCached = items = slideBy = navCurrentIndex = navCurrentIndexCached = hasControls = visibleNavIndexes = visibleNavIndexesCached =
       this.getInfo = this.events = this.goTo = this.play = this.pause = this.destroy = null;
       this.isOn = isOn = false;
     }
