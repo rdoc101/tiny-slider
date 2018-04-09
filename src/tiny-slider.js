@@ -955,15 +955,13 @@ export var tns = function(options) {
     resizeTimer = setTimeout(function () {
       if (isOn) {
         var newWW = getWindowWidth();
-        if (windowWidth !== newWW) {
-          windowWidth = newWW;
+        windowWidth = newWW;
 
-          resizeTasks();
+        resizeTasks();
 
-          if (nested === 'outer') { events.emit('outerResized', info(e)); }
-        }
+        if (nested === 'outer') { events.emit('outerResized', info(e)); }
       }
-    }, 100); // update after stop resizing for 100 ms
+    }, 200); // update after stop resizing for 100 ms
   }
 
   function resizeTasks () {
